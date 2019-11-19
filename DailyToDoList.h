@@ -3,6 +3,9 @@
 #include "ToDo.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
+#include <cstring>
 
 class DailyToDoList
 {
@@ -16,6 +19,9 @@ public:
     std::string get_current_date();
     bool check_bounds(int index);
     void print_to_do();
+    
+    void save_toDo();
+    void read_toDo();
     
 private:
     std::string current_date;

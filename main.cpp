@@ -2,10 +2,12 @@
 #include "DailyToDoList.h"
 #include <iostream>
 
+
 using namespace std;
 
 void print_menu(DailyToDoList);
 ToDo initializeToDo();
+
 
 int main() {
     string current_date;
@@ -48,6 +50,8 @@ void print_menu(DailyToDoList toDoList) {
     cout << "c) Modify something from your To Do list." << endl;
     cout << "d) Shift priority around in your To Do list." << endl;
     cout << "e) Print out your current To Do list." << endl;
+    cout << "f) Save To Do List" << endl;
+    cout << "g) Read from saved To Do List" << endl;
     cout << "q) Exit out of your To Do list." << endl;
     cin >> menuOption;
     cout << endl;
@@ -100,6 +104,18 @@ void print_menu(DailyToDoList toDoList) {
             break;
         case 'E':
             toDoList.print_to_do();
+            break;
+        case 'f' :
+            toDoList.save_toDo();
+            break;
+        case 'F' :
+            toDoList.save_toDo();
+            break;
+        case 'g':
+            toDoList.read_toDo();
+            break;
+        case 'G':
+            toDoList.read_toDo();
             break;
         case 'q':
             close_menu = 0;

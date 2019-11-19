@@ -100,6 +100,45 @@ void DailyToDoList::modify_to_do(int index) {
 
 }
 
+void DailyToDoList::save_toDo() {
+    std::ofstream out_file {"../ToDo.txt", std::ios::out};
+    
+    if (!out_file) {
+        std::cerr << "Error in creating this file.." << std::endl;
+        exit(0);
+    }
+            
+    for (int i{0}; i < toDoList.size(); i++) {
+        out_file << toDoList.at(i).get_title() << std::endl;
+        out_file << toDoList.at(i).get_description() << std::endl;
+        out_file << toDoList.at(i).get_status() << std::endl;
+    }
+    
+    out_file.close();
+}
+
+void DailyToDoList::read_toDo() {
+    std::ifstream in_file{"../ToDo.txt"};
+    
+    if (!in_file) {
+        std::cerr << "Error in opening this file.." << std::endl;
+        exit(0);
+    }
+
+    while (in_file) {
+        std::string title, description, status;
+        getline(in_file, title, '\n');
+        getline(in_file, description, '\n');
+        getline(in_file, status, '\n');
+        toDoList.push_back(ToDo(title, description, status));
+    }
+    toDoList.pop_back();
+
+    in_file.close();
+}
+
+
+
 void DailyToDoList::set_current_date(std::string d) {
     current_date = d;
 }
